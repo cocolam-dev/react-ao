@@ -7,6 +7,7 @@ const AOHome = () => {
     <div className="AOHomePage">
       <section>
         <h1>Welcome, {currentUser.Username}, to AUSTRAC Online</h1>
+        <h2 className="DemoWarning">DEMO ONLY</h2>
         <h2>Announcements</h2>
         <hr />
         <p>

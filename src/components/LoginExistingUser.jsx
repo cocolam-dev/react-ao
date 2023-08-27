@@ -15,6 +15,7 @@ const LoginExistingUser = () => {
   return (
     <div className="LoginExistingUserContainer">
       <h2>Existing User</h2>
+
       <form action="" className="UserLoginForm">
         <label name="UserName">User / Email Address</label>
         <input type="text" value="MockUser" onChange={handleFormInput} />

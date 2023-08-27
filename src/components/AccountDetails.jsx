@@ -46,7 +46,7 @@ const AccountDetails = () => {
   return (
     <div className="AccountDetailsPage">
       <h1>Account Details</h1>
-
+      <h2 className="DemoWarning">DEMO ONLY</h2>
       <form className="AccountDetailsForm">
         <div className="AccountDetailInputField">
           <label htmlFor="Username">Username</label>

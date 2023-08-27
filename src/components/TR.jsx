@@ -76,6 +76,7 @@ const TR = () => {
     <div className="TRPage">
       <section>
         <h1>Transaction Reporting</h1>
+        <h2 className="DemoWarning">DEMO ONLY</h2>
         <h2>Upload a transaction report</h2>
         <form className="TRUploadForm">
           <label htmlFor="TRUpload" className="Instruction">

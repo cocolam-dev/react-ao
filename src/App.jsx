@@ -1,8 +1,7 @@
-import { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-import logo from "./images/austrac-logo.svg";
+
 import AccountDetails from "./components/AccountDetails";
 import AOHome from "./components/AOHome";
 import { useGlobalContext } from "./components/GlobalContext";

@@ -8,6 +8,7 @@ const Login = ({ setCurrentPage }) => {
     <div className="LoginPage">
       <section>
         <h1>AUSTRAC Online</h1>
+        <h2 className="DemoWarning">DEMO ONLY</h2>
         <div className="LoginContainer">
           <LoginExistingUser />
           <LoginNewUser setCurrentPage={setCurrentPage} />
