@@ -77,6 +77,15 @@ const TR = () => {
       <section>
         <h1>Transaction Reporting</h1>
         <h2 className="DemoWarning">DEMO ONLY</h2>
+        {isSubmitSuccessful && (
+          <Alert
+            onClose={() => {
+              setIsSubmitSuccessful(false);
+            }}
+          >
+            Upload Successful. Receipt Number: {receiptNumber}
+          </Alert>
+        )}
         <h2>Upload a transaction report</h2>
         <form className="TRUploadForm">
           <label htmlFor="TRUpload" className="Instruction">
@@ -109,15 +118,6 @@ const TR = () => {
             >
               Submit
             </button>
-            {isSubmitSuccessful && (
-              <Alert
-                onClose={() => {
-                  setIsSubmitSuccessful(false);
-                }}
-              >
-                Upload Successful. Receipt Number: {receiptNumber}
-              </Alert>
-            )}
           </div>
         </form>
         <hr />

@@ -47,12 +47,24 @@ const AccountDetails = () => {
     <div className="AccountDetailsPage">
       <h1>Account Details</h1>
       <h2 className="DemoWarning">DEMO ONLY</h2>
+      <div className="AlertContainer">
+        {isSubmitSuccessful && (
+          <Alert
+            onClose={() => {
+              setIsSubmitSuccessful(false);
+            }}
+          >
+            Update successful.
+          </Alert>
+        )}
+      </div>
       <form className="AccountDetailsForm">
         <div className="AccountDetailInputField">
           <label htmlFor="Username">Username</label>
           <input
             type="text"
             name="Username"
+            id="Username"
             value={currentUser.Username}
             onChange={handleChange}
             disabled={isDisabled}
@@ -216,17 +228,6 @@ const AccountDetails = () => {
           />
         </div>
 
-        <div className="AlertContainer">
-          {isSubmitSuccessful && (
-            <Alert
-              onClose={() => {
-                setIsSubmitSuccessful(false);
-              }}
-            >
-              Update successful.
-            </Alert>
-          )}
-        </div>
         <div className="AccountDetailButtons">
           {isDisabled ? (
             <button
