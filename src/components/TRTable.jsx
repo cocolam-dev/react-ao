@@ -32,7 +32,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function TRTable() {
-  const { tRList, setTRList } = useGlobalContext();
+  const { currentUser, tRList, setTRList } = useGlobalContext();
   const rows = tRList;
   return (
     <>

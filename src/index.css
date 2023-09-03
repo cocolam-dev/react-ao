@@ -104,6 +104,21 @@ button:disabled:hover {
   background-color: #dddddd;
 }
 
+.DisabledBtn,
+button:disabled {
+  background-color: #c4c4c4;
+  color: #fff;
+  border-radius: 1000px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 220px;
+  padding: 14px 35px 14px 35px;
+  border: none;
+  font-size: 18px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
 .MenuOption:hover,
 .MenuOption:hover .MenuBtn {
   background-color: var(--ContainerBackgroundColor);
@@ -124,11 +139,49 @@ label {
   margin: 1rem;
 }
 
+li {
+  list-style-type: none;
+}
+
 .LoginPage input,
 .AccountDetailsPage input,
 select {
   width: 20rem;
   height: 2.3rem;
+  border-radius: 5px;
+  border: 1px solid #c0c0c0;
+  padding: 5px;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+input + span {
+  position: relative;
+}
+
+form.Submitted input:invalid,
+form.Submitted textarea:invalid,
+form.Submitted select:invalid {
+  border: 1px solid red;
+}
+
+form.Submitted input:invalid + span::before,
+form.Submitted textarea:invalid + span::before,
+form.Submitted select:invalid + span::before {
+  content: "✖";
+  color: red;
+}
+
+form.Submitted input:valid + span::before,
+form.Submitted textarea:valid + span::before,
+form.Submitted select:valid + span::before {
+  content: "✓";
+  color: green;
+}
+
+textarea {
+  width: 20rem;
+  height: 4rem;
   border-radius: 5px;
   border: 1px solid #c0c0c0;
   padding: 5px;
@@ -261,7 +314,7 @@ Account Details
 
 .AccountDetailInputField {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 3fr 3fr 1fr;
   align-items: center;
 }
 
@@ -380,7 +433,8 @@ Media Query
 
   .LoginPage input,
   .AccountDetailsPage input,
-  select {
+  select,
+  .AccountDetailsPage textarea {
     width: 15rem;
   }
 
@@ -460,22 +514,15 @@ Media Query
     font-size: 2rem;
   }
 
-  /* .MenuBtn {
-    font-size: 0.8rem;
-    margin-left: 5px;
-    padding: none;
-    text-align: left;
-  } */
-
   .AccountDetailsPage,
   .AOHomePage,
   .TRPage {
-    width: 100vw;
     padding-left: 17rem;
   }
 
   .AOHomePage section,
-  .TRPage section {
+  .TRPage section,
+  .AccountDetailsPage section {
     max-width: 60vw;
   }
 
@@ -507,7 +554,8 @@ Media Query
   }
 
   .AOHomePage section,
-  .TRPage section {
+  .TRPage section,
+  .AccountDetailsHeader {
     max-width: 60vw;
   }
   .MenuIcon {

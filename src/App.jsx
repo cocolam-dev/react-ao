@@ -10,7 +10,7 @@ import TR from "./components/TR";
 
 const DisplayCurrentPage = () => {
   const { currentPage, setCurrentPage } = useGlobalContext();
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
 
   if (currentPage === "Login") {
     return <Login />;
