@@ -7,6 +7,7 @@ const MenuContent = () => {
     setIsLoggedIn,
     currentPage,
     setCurrentPage,
+    setCurrentUser,
     isMenuExpanded,
     setIsMenuExpanded,
   } = useGlobalContext();

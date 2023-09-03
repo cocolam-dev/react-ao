@@ -64,7 +64,7 @@ const TR = () => {
         FileName: filename,
         SubmitMethod: "Manual",
         SubmissionDate: dateTime,
-        User: currentUser.Username,
+        User: `${currentUser.FirstName} ${currentUser.Surname}`,
         ReportingEntity: currentUser.BusinessName,
       },
     ]);

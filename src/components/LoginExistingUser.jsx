@@ -1,36 +1,72 @@
+import { useState } from "react";
 import { useGlobalContext } from "./GlobalContext";
+import { Alert } from "@mui/material";
 
 const LoginExistingUser = () => {
-  const { currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn } =
-    useGlobalContext();
-  const handleFormInput = (e) => {
-    console.log(e.target.value);
+  const {
+    currentUser,
+    setCurrentUser,
+    currentPage,
+    setCurrentPage,
+    isLoggedIn,
+    setIsLoggedIn,
+  } = useGlobalContext();
+
+  const [isLoginSuccessful, setIsLoginSuccessful] = useState(true);
+
+  const handleChange = (e) => {
+    let newUser = {
+      ...currentUser,
+      [e.target.name]: e.target.value,
+    };
+    setCurrentUser(newUser);
+    console.log(newUser);
   };
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
-    alert("Form submitted");
+    if (e.target.form.checkValidity()) {
+      setIsLoginSuccessful(true);
+      setIsLoggedIn(true);
+      setCurrentPage("AOHome");
+      console.log(currentUser);
+    } else {
+      setIsLoginSuccessful(false);
+      return;
+    }
   };
 
   return (
     <div className="LoginExistingUserContainer">
       <h2>Existing User</h2>
 
-      <form action="" className="UserLoginForm">
-        <label name="UserName">User / Email Address</label>
-        <input type="text" value="MockUser" onChange={handleFormInput} />
-        <label name="Password">Password</label>
+      <div className="AlertContainer">
+        {!isLoginSuccessful && (
+          <Alert severity="warning">The login details are invalid.</Alert>
+        )}
+      </div>
+
+      <form className="UserLoginForm">
+        <label htmlFor="Email">Email Address</label>
+        <input
+          type="Email"
+          name="Email"
+          id="Email"
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="Password">Password</label>
         <input
           type="password"
-          value="MockPassword"
-          onChange={handleFormInput}
+          name="Password"
+          id="Password"
+          onChange={handleChange}
+          required
         />
         <button
+          type="submit"
           className="GreenBtn"
-          onClick={() => {
-            setIsLoggedIn(true);
-            setCurrentPage("AOHome");
-          }}
+          onClick={(e) => handleFormSubmission(e)}
         >
           Login
         </button>
