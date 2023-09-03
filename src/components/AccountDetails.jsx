@@ -43,6 +43,7 @@ const AccountDetails = () => {
       }
       setIsDisabled(true);
       setIsSubmitSuccessful(true);
+      setIsError(false);
     } else if (action === "cancel" && isLoggedIn) {
       setIsDisabled(true);
     } else if (action === "submit" && !isLoggedIn) {
