@@ -9,7 +9,7 @@ import SideMenu from "./components/SideMenu";
 import TR from "./components/TR";
 
 const DisplayCurrentPage = () => {
-  const { currentPage, setCurrentPage } = useGlobalContext();
+  const { currentPage } = useGlobalContext();
   // window.scrollTo(0, 0);
 
   if (currentPage === "Login") {

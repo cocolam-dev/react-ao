@@ -10,6 +10,17 @@ const Users = [
     Password: "MockPassword",
     DOB: "1980-01-31",
   },
+  {
+    BusinessName: "",
+    BusinessStructure: "",
+    BusinessStructureDescription: "",
+    ABN: "",
+    FirstName: "",
+    Surname: "",
+    Email: "",
+    Password: "",
+    DOB: "",
+  },
 ];
 
 export default Users;

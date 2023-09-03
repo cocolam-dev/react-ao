@@ -69,6 +69,7 @@ const MenuContent = () => {
           className="MenuBtn"
           onClick={() => {
             setIsLoggedIn(false);
+            setCurrentUser({});
             setCurrentPage("Login");
             setIsMenuExpanded(false);
           }}

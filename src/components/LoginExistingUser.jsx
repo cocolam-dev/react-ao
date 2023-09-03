@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useGlobalContext } from "./GlobalContext";
 import { Alert } from "@mui/material";
+import Users from "../Users";
 
 const LoginExistingUser = () => {
   const {
@@ -15,21 +16,17 @@ const LoginExistingUser = () => {
   const [isLoginSuccessful, setIsLoginSuccessful] = useState(true);
 
   const handleChange = (e) => {
-    let newUser = {
-      ...currentUser,
-      [e.target.name]: e.target.value,
-    };
+    let newUser = { ...currentUser, [e.target.name]: e.target.value };
     setCurrentUser(newUser);
-    console.log(newUser);
   };
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
     if (e.target.form.checkValidity()) {
+      setCurrentUser({ ...Users[0], ...currentUser });
       setIsLoginSuccessful(true);
       setIsLoggedIn(true);
       setCurrentPage("AOHome");
-      console.log(currentUser);
     } else {
       setIsLoginSuccessful(false);
       return;

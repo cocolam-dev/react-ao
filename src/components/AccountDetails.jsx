@@ -51,13 +51,13 @@ const AccountDetails = () => {
         setIsError(true);
         return;
       }
-      console.log(currentUser);
       setCurrentPage("AOHome");
       setIsLoggedIn(true);
     } else if (action === "edit") {
       setIsDisabled(false);
       setIsSubmitSuccessful(false);
     } else if (action === "cancel" && !isLoggedIn) {
+      setCurrentUser({});
       setCurrentPage("Login");
     } else {
       throw new Error("unhandled condition");
@@ -180,24 +180,6 @@ const AccountDetails = () => {
         )}
         <li className="AccountDetailInputField">
           <label htmlFor="ABN">ABN*</label>
-
-          {/* <input
-            type="text"
-            name="ABN"
-            id="ABN"
-            value={currentUser.ABN}
-            onChange={handleChange}
-            disabled={isDisabled}
-            maxLength={11}
-            onInput={(e) => {
-              console.log(e);
-              const input = e.nativeEvent.data;
-              return (
-                (input === " " || (input.length === 1 && isNaN(e.key))) &&
-                e.preventDefault()
-              );
-            }}
-          /> */}
 
           <input
             type="text"
