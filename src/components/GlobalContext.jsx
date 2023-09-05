@@ -7,7 +7,7 @@ const GlobalContext = createContext();
 export const useGlobalContext = () => useContext(GlobalContext);
 
 const AppContext = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(Users[0]);
+  const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentPage, setCurrentPage] = useState("Login");
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);

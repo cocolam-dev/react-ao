@@ -1,13 +1,17 @@
+import Users from "../Users";
 import { useGlobalContext } from "./GlobalContext";
 
 const LoginNewUser = () => {
-  const { setCurrentPage } = useGlobalContext();
+  const { setCurrentPage, setCurrentUser } = useGlobalContext();
   return (
     <div className="LoginNewUserContainer">
       <h2>New User</h2>
       <button
         className="GreenBtn"
-        onClick={() => setCurrentPage("AccountDetails")}
+        onClick={() => {
+          setCurrentUser(Users[1]);
+          setCurrentPage("AccountDetails");
+        }}
       >
         Sign Up
       </button>
