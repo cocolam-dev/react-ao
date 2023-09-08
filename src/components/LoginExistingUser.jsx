@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useGlobalContext } from "./GlobalContext";
 import { Alert } from "@mui/material";
 import Users from "../Users";
+import { useNavigate } from "react-router-dom";
 
 const LoginExistingUser = () => {
   const {
@@ -13,6 +14,8 @@ const LoginExistingUser = () => {
     setIsLoggedIn,
   } = useGlobalContext();
 
+  const navigate = useNavigate();
+
   const [isLoginSuccessful, setIsLoginSuccessful] = useState(true);
 
   const handleChange = (e) => {
@@ -22,11 +25,12 @@ const LoginExistingUser = () => {
 
   const handleFormSubmission = (e) => {
     e.preventDefault();
+
     if (e.target.form.checkValidity()) {
       setCurrentUser({ ...Users[0], ...currentUser });
       setIsLoginSuccessful(true);
       setIsLoggedIn(true);
-      setCurrentPage("AOHome");
+      navigate("/home");
     } else {
       setIsLoginSuccessful(false);
       return;
