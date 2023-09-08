@@ -66,7 +66,7 @@ const MenuContent = () => {
           </span>
         </button>
       </div>
-      <div className={currentPage === "Login" ? " SelectedBtn" : "MenuOption"}>
+      <div className="MenuOption">
         <button
           className="MenuBtn"
           onClick={() => {
