@@ -5,7 +5,8 @@ import Users from "../Users";
 import { useNavigate } from "react-router-dom";
 
 const LoginExistingUser = () => {
-  const { currentUser, setCurrentUser, setIsLoggedIn } = useGlobalContext();
+  const { currentUser, setCurrentUser, setIsLoggedIn, setCurrentPage } =
+    useGlobalContext();
 
   const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ const LoginExistingUser = () => {
       setIsLoginSuccessful(true);
       setIsLoggedIn(true);
       navigate("/home");
+      setCurrentPage("AOHome");
     } else {
       setIsLoginSuccessful(false);
       return;
