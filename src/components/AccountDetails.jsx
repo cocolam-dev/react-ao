@@ -2,6 +2,7 @@ import { useState } from "react";
 import Users from "../Users";
 import { useGlobalContext } from "./GlobalContext";
 import { Alert } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const AccountDetails = () => {
   const {
@@ -11,6 +12,8 @@ const AccountDetails = () => {
     setIsLoggedIn,
     setCurrentPage,
   } = useGlobalContext();
+
+  const navigate = useNavigate();
 
   const [isDisabled, setIsDisabled] = useState(isLoggedIn);
 
@@ -37,29 +40,29 @@ const AccountDetails = () => {
 
     if (action === "submit" && isLoggedIn) {
       if (!e.target.form.checkValidity()) {
-        e.preventDefault();
         setIsError(true);
         return;
+      } else {
+        setIsDisabled(true);
+        setIsSubmitSuccessful(true);
+        setIsError(false);
       }
-      setIsDisabled(true);
-      setIsSubmitSuccessful(true);
-      setIsError(false);
     } else if (action === "cancel" && isLoggedIn) {
       setIsDisabled(true);
     } else if (action === "submit" && !isLoggedIn) {
       if (!e.target.form.checkValidity()) {
-        e.preventDefault();
         setIsError(true);
         return;
+      } else {
+        navigate("/home");
+        setIsLoggedIn(true);
       }
-      setCurrentPage("AOHome");
-      setIsLoggedIn(true);
     } else if (action === "edit") {
       setIsDisabled(false);
       setIsSubmitSuccessful(false);
     } else if (action === "cancel" && !isLoggedIn) {
       setCurrentUser({});
-      setCurrentPage("Login");
+      navigate("/home");
     } else {
       throw new Error("unhandled condition");
     }

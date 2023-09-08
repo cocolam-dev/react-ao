@@ -1,5 +1,6 @@
 import { useGlobalContext } from "./GlobalContext";
 import { IoIosArrowForward } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const MenuContent = () => {
   const {
@@ -12,6 +13,8 @@ const MenuContent = () => {
     setIsMenuExpanded,
   } = useGlobalContext();
 
+  const navigate = useNavigate();
+
   return (
     <div className={isMenuExpanded ? "SideMenu" : "MenuHidden SideMenu"}>
       <h3 className="MenuTitle">Menu</h3>
@@ -19,8 +22,7 @@ const MenuContent = () => {
         <button
           className="MenuBtn"
           onClick={() => {
-            setCurrentPage("AOHome");
-
+            navigate("/home");
             setIsMenuExpanded(false);
           }}
         >
@@ -38,8 +40,7 @@ const MenuContent = () => {
         <button
           className="MenuBtn"
           onClick={() => {
-            setCurrentPage("AccountDetails");
-
+            navigate("/accountdetails");
             setIsMenuExpanded(false);
           }}
         >
@@ -53,8 +54,7 @@ const MenuContent = () => {
         <button
           className="MenuBtn"
           onClick={() => {
-            setCurrentPage("TR");
-
+            navigate("/tr");
             setIsMenuExpanded(false);
           }}
         >
@@ -70,7 +70,7 @@ const MenuContent = () => {
           onClick={() => {
             setIsLoggedIn(false);
             setCurrentUser({});
-            setCurrentPage("Login");
+            navigate("/");
             setIsMenuExpanded(false);
           }}
         >

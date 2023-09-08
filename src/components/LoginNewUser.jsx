@@ -1,7 +1,10 @@
 import Users from "../Users";
 import { useGlobalContext } from "./GlobalContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginNewUser = () => {
+  const navigate = useNavigate();
+
   const { setCurrentPage, setCurrentUser } = useGlobalContext();
   return (
     <div className="LoginNewUserContainer">
@@ -10,7 +13,7 @@ const LoginNewUser = () => {
         className="GreenBtn"
         onClick={() => {
           setCurrentUser(Users[1]);
-          setCurrentPage("AccountDetails");
+          navigate("/accountdetails");
         }}
       >
         Sign Up

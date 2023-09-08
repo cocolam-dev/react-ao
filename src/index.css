@@ -56,12 +56,7 @@ h2 {
   font-size: 0.9rem;
 }
 
-.LoginBtn,
-.SignUpBtn,
-.CancelBtn,
 .GreenBtn,
-.EditBtn,
-.TRUploadBtn,
 ::-webkit-file-upload-button {
   background-color: var(--ButtonColor);
   border-radius: 1000px;
@@ -73,6 +68,8 @@ h2 {
   font-size: 18px;
   transition: 0.3s;
   cursor: pointer;
+  text-align: center;
+  line-height: 1.2rem;
 }
 
 .LoginBtn:hover,
@@ -214,10 +211,16 @@ hr {
   padding-left: 1rem;
 }
 
+.ErrorPage {
+  display: flex;
+  flex-direction: column;
+}
+
 .LoginPage::before,
 .AccountDetailsPage::before,
 .AOHomePage::before,
-.TRPage::before {
+.TRPage::before,
+.ErrorPage::before {
   content: "";
   width: calc((100vw - 200px) / 2 + 400px);
   height: 100%;
