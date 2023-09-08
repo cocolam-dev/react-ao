@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 const MenuContent = () => {
   const {
-    isLoggedIn,
     setIsLoggedIn,
     currentPage,
     setCurrentPage,
@@ -24,6 +23,7 @@ const MenuContent = () => {
           onClick={() => {
             navigate("/home");
             setIsMenuExpanded(false);
+            setCurrentPage("AOHome");
           }}
         >
           Home
@@ -42,6 +42,7 @@ const MenuContent = () => {
           onClick={() => {
             navigate("/accountdetails");
             setIsMenuExpanded(false);
+            setCurrentPage("AccountDetails");
           }}
         >
           Account Details
@@ -56,6 +57,7 @@ const MenuContent = () => {
           onClick={() => {
             navigate("/tr");
             setIsMenuExpanded(false);
+            setCurrentPage("TR");
           }}
         >
           Transaction Reporting

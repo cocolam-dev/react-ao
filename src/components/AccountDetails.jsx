@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Users from "../Users";
 import { useGlobalContext } from "./GlobalContext";
 import { Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -8,9 +7,9 @@ const AccountDetails = () => {
   const {
     currentUser,
     setCurrentUser,
+    setCurrentPage,
     isLoggedIn,
     setIsLoggedIn,
-    setCurrentPage,
   } = useGlobalContext();
 
   const navigate = useNavigate();
@@ -56,6 +55,7 @@ const AccountDetails = () => {
       } else {
         navigate("/home");
         setIsLoggedIn(true);
+        setCurrentPage("AOHome");
       }
     } else if (action === "edit") {
       setIsDisabled(false);

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const LoginNewUser = () => {
   const navigate = useNavigate();
 
-  const { setCurrentPage, setCurrentUser } = useGlobalContext();
+  const { setCurrentUser, setCurrentPage } = useGlobalContext();
   return (
     <div className="LoginNewUserContainer">
       <h2>New User</h2>

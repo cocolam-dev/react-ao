@@ -1,9 +1,7 @@
 import LoginExistingUser from "./LoginExistingUser";
 import LoginNewUser from "./LoginNewUser";
-import { useGlobalContext } from "./GlobalContext";
 
-const Login = ({ setCurrentPage }) => {
-  const { isLoggedIn, setIsLoggedIn } = useGlobalContext();
+const Login = () => {
   return (
     <div className="LoginPage">
       <section>
@@ -11,7 +9,7 @@ const Login = ({ setCurrentPage }) => {
         <h2 className="DemoWarning">DEMO ONLY</h2>
         <div className="LoginContainer">
           <LoginExistingUser />
-          <LoginNewUser setCurrentPage={setCurrentPage} />
+          <LoginNewUser />
         </div>
       </section>
       <footer className="LoginFooter">
