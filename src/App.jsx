@@ -35,10 +35,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   const { isLoggedIn } = useGlobalContext();
   return (
-    <BrowserRouter>
-      {/* <Navbar />
-        <DisplayCurrentPage />
-        {isLoggedIn && <SideMenu />} */}
+    <BrowserRouter basename="/react-ao">
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Login />} />
