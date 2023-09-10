@@ -1,33 +1,32 @@
 import { useState } from "react";
 import { useGlobalContext } from "./GlobalContext";
-
 import TRTable from "./TRTable";
 import { Alert } from "@mui/material";
 
 const TR = () => {
-  //   const { isLoggedIn, setIsLoggedIn, currentPage, setCurrentPage } =
-  //     useGlobalContext();
-
+  
   const { tRList, setTRList, currentUser } = useGlobalContext();
 
-  const [isFileSelected, setIsFileSelected] = useState(
-    !!document.getElementById("TRUpload")?.value
+  const [isFileSelected, setIsFileSelected] = useState<boolean>(
+    !!(document.getElementById("TRUpload") as HTMLInputElement)?.value
   );
 
-  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState<boolean>(false);
 
-  const [receiptNumber, setReceiptNumber] = useState(0);
+  const [receiptNumber, setReceiptNumber] = useState<string>("");
 
   const handleTRSubmit = (e) => {
     e.preventDefault();
 
     const min = Math.ceil(1000000);
     const max = Math.floor(9999999);
-    const newReceiptNumber = Math.floor(Math.random() * (max - min) + min);
+    const newReceiptNumber = Math.floor(
+      Math.random() * (max - min) + min
+    ).toString();
     setReceiptNumber(newReceiptNumber);
 
-    let current = new Date();
-    let cDate =
+    let current: Date = new Date();
+    let cDate: string =
       current.getDate() +
       "." +
       (current.getMonth() + 1) +
@@ -44,7 +43,9 @@ const TR = () => {
 
     // https://stackoverflow.com/questions/857618/javascript-how-to-extract-filename-from-a-file-input-control
 
-    var fullPath = document.getElementById("TRUpload").value;
+    //https://stackoverflow.com/questions/12989741/the-property-value-does-not-exist-on-value-of-type-htmlelement
+    var fullPath = (document.getElementById("TRUpload") as HTMLInputElement)
+      .value;
     if (fullPath) {
       var startIndex =
         fullPath.indexOf("\\") >= 0
@@ -68,7 +69,7 @@ const TR = () => {
         ReportingEntity: currentUser.BusinessName,
       },
     ]);
-    document.getElementById("TRUpload").value = "";
+    // document.getElementById("TRUpload").value = "";
     setIsSubmitSuccessful(true);
     setIsFileSelected(false);
   };

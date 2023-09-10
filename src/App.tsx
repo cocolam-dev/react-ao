@@ -1,11 +1,9 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AccountDetails from "./components/AccountDetails";
 import AOHome from "./components/AOHome";
 import { useGlobalContext } from "./components/GlobalContext";
-import SideMenu from "./components/SideMenu";
 import TR from "./components/TR";
 import SharedLayout from "./components/SharedLayout";
 import Error from "./components/Error";
@@ -43,7 +41,7 @@ function App() {
             path="home"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <AOHome isLoggedIn={isLoggedIn} />
+                <AOHome />
               </ProtectedRoute>
             }
           />
@@ -52,7 +50,7 @@ function App() {
             path="tr"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <TR isLoggedIn={isLoggedIn} />
+                <TR />
               </ProtectedRoute>
             }
           />
