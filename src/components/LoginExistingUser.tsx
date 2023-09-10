@@ -3,6 +3,7 @@ import { useGlobalContext } from "./GlobalContext";
 import { Alert } from "@mui/material";
 import Users from "../Users";
 import { useNavigate } from "react-router-dom";
+import { IUser } from "./TSInterface";
 
 const LoginExistingUser = () => {
   const { currentUser, setCurrentUser, setIsLoggedIn, setCurrentPage } =
@@ -10,10 +11,13 @@ const LoginExistingUser = () => {
 
   const navigate = useNavigate();
 
-  const [isLoginSuccessful, setIsLoginSuccessful] = useState(true);
+  const [isLoginSuccessful, setIsLoginSuccessful] = useState<boolean>(true);
 
   const handleChange = (e) => {
-    let newUser = { ...currentUser, [e.target.name]: e.target.value };
+    let newUser: IUser = {
+      ...currentUser,
+      [e.target.name]: e.target.value,
+    };
     setCurrentUser(newUser);
   };
 

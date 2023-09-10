@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -6,7 +5,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import TRS from "../TRs";
 import { useGlobalContext } from "./GlobalContext";
 import { styled } from "@mui/material";
 
@@ -32,7 +30,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function TRTable() {
-  const { currentUser, tRList, setTRList } = useGlobalContext();
+  const { tRList } = useGlobalContext();
   const rows = tRList;
   return (
     <>

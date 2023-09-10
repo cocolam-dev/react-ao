@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import { useGlobalContext } from "./GlobalContext";
 import { Alert } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { IUser } from "./TSInterface";
+import { Action } from "./Action";
 
 const AccountDetails = () => {
   const {
@@ -14,15 +16,25 @@ const AccountDetails = () => {
 
   const navigate = useNavigate();
 
-  const [isDisabled, setIsDisabled] = useState(isLoggedIn);
+  const [isDisabled, setIsDisabled] = useState<boolean>(isLoggedIn);
 
-  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const [isError, setIsError] = useState(false);
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState<boolean>(false);
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isError, setIsError] = useState<boolean>(false);
 
-  const handleChange = (e) => {
+  //https://stackoverflow.com/questions/42081549/typescript-react-event-types
+  //https://claritydev.net/blog/typescript-typing-form-events-in-react
+
+  const handleChange = (
+    e: ChangeEvent<
+      | HTMLFormElement
+      | HTMLInputElement
+      | HTMLTextAreaElement
+      | HTMLSelectElement
+    >
+  ) => {
     let newUser = {
       ...currentUser,
       [e.target.name]: e.target.value,
@@ -33,12 +45,24 @@ const AccountDetails = () => {
     setCurrentUser(newUser);
   };
 
-  const handleFormSubmission = (e, action) => {
+  const handleFormSubmission = (
+    e:
+      | ChangeEvent<
+          | HTMLFormElement
+          | HTMLInputElement
+          | HTMLTextAreaElement
+          | HTMLSelectElement
+        >
+      | MouseEvent<HTMLButtonElement>,
+    action: Action
+  ) => {
     e.preventDefault();
     setIsSubmitted(true);
 
-    if (action === "submit" && isLoggedIn) {
-      if (!e.target.form.checkValidity()) {
+    const target = e.target as HTMLFormElement;
+
+    if (action === Action.SUBMIT && isLoggedIn) {
+      if (!target.form.checkValidity()) {
         setIsError(true);
         return;
       } else {
@@ -46,10 +70,10 @@ const AccountDetails = () => {
         setIsSubmitSuccessful(true);
         setIsError(false);
       }
-    } else if (action === "cancel" && isLoggedIn) {
+    } else if (action === Action.CANCEL && isLoggedIn) {
       setIsDisabled(true);
-    } else if (action === "submit" && !isLoggedIn) {
-      if (!e.target.form.checkValidity()) {
+    } else if (action === Action.SUBMIT && !isLoggedIn) {
+      if (!target.form.checkValidity()) {
         setIsError(true);
         return;
       } else {
@@ -57,11 +81,11 @@ const AccountDetails = () => {
         setIsLoggedIn(true);
         setCurrentPage("AOHome");
       }
-    } else if (action === "edit") {
+    } else if (action === Action.EDIT) {
       setIsDisabled(false);
       setIsSubmitSuccessful(false);
-    } else if (action === "cancel" && !isLoggedIn) {
-      setCurrentUser({});
+    } else if (action === Action.CANCEL && !isLoggedIn) {
+      setCurrentUser({} as IUser);
       navigate("/home");
     } else {
       throw new Error("unhandled condition");
@@ -137,7 +161,7 @@ const AccountDetails = () => {
             value={currentUser.BusinessName}
             onChange={handleChange}
             disabled={isDisabled}
-            maxLength="100"
+            maxLength={100}
             required
           />
           <span></span>
@@ -176,7 +200,7 @@ const AccountDetails = () => {
               onChange={handleChange}
               disabled={isDisabled}
               placeholder="Please enter a description for the business structure"
-              maxLength="100"
+              maxLength={100}
               required
             ></textarea>
             <span></span>
@@ -195,15 +219,18 @@ const AccountDetails = () => {
             disabled={isDisabled}
             required
             pattern="[0-9]{11}"
-            minLength="11"
-            maxLength="11"
-            onInput={(e) =>
-              (e.target.value = e.target.value.slice(0, 11)) &&
-              (e.nativeEvent.data === "." ||
-                e.nativeEvent.data === " " ||
-                isNaN(e.target.value)) &&
-              (e.target.value = currentUser.ABN)
-            }
+            minLength={11}
+            maxLength={11}
+            onInput={(e: ChangeEvent<HTMLInputElement>) => {
+              const target = e.target as HTMLInputElement;
+              const nativeEvent = e.nativeEvent as unknown as HTMLFormElement;
+              (target.value = target.value.slice(0, 11)) &&
+                (nativeEvent.data === "." ||
+                  nativeEvent.data === " " ||
+                  isNaN(target.value as any)) &&
+                (target.value = currentUser.ABN);
+            }}
+            //unsure of the use of unknown and any
           />
           <span></span>
         </li>
@@ -259,7 +286,7 @@ const AccountDetails = () => {
             name="Password"
             id="Password"
             title="Mandatory. Maximum length allowed is 50 characters"
-            maxLength="50"
+            maxLength={50}
             value={currentUser.Password}
             onChange={handleChange}
             disabled={isDisabled}
@@ -287,7 +314,9 @@ const AccountDetails = () => {
           {isDisabled ? (
             <button
               className="GreenBtn"
-              onClick={(e) => handleFormSubmission(e, "edit")}
+              onClick={(e: MouseEvent<HTMLButtonElement>) =>
+                handleFormSubmission(e, Action.EDIT)
+              }
             >
               Edit
             </button>
@@ -295,14 +324,18 @@ const AccountDetails = () => {
             <>
               <button
                 className="GreyBtn"
-                onClick={(e) => handleFormSubmission(e, "cancel")}
+                onClick={(e: MouseEvent<HTMLButtonElement>) =>
+                  handleFormSubmission(e, Action.CANCEL)
+                }
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 className="GreenBtn"
-                onClick={(e) => handleFormSubmission(e, "submit")}
+                onClick={(e: MouseEvent<HTMLButtonElement>) =>
+                  handleFormSubmission(e, Action.SUBMIT)
+                }
               >
                 Submit
               </button>

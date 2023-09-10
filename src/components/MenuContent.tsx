@@ -1,6 +1,7 @@
 import { useGlobalContext } from "./GlobalContext";
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { IUser } from "./TSInterface";
 
 const MenuContent = () => {
   const {
@@ -71,7 +72,7 @@ const MenuContent = () => {
           className="MenuBtn"
           onClick={() => {
             setIsLoggedIn(false);
-            setCurrentUser({});
+            setCurrentUser({} as IUser);
             navigate("/");
             setIsMenuExpanded(false);
           }}
