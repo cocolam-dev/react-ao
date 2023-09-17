@@ -1,16 +1,20 @@
-import { useGlobalContext } from "./GlobalContext";
+import { useGlobalContext } from "../common/GlobalContext";
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { IUser } from "./TSInterface";
+import { IUser } from "../pages/TR/TSInterface";
+import Users from "../pages/login/Users";
 
 const MenuContent = () => {
   const {
     setIsLoggedIn,
     currentPage,
-    setCurrentPage,
     setCurrentUser,
     isMenuExpanded,
     setIsMenuExpanded,
+    setIsSubmitSuccessful,
+    setIsEditing,
+    setTempUser,
+    setCurrentPage,
   } = useGlobalContext();
 
   const navigate = useNavigate();
@@ -73,8 +77,11 @@ const MenuContent = () => {
           onClick={() => {
             setIsLoggedIn(false);
             setCurrentUser({} as IUser);
+            setTempUser(Users[1]);
             navigate("/");
             setIsMenuExpanded(false);
+            setIsSubmitSuccessful(false);
+            setIsEditing(true);
           }}
         >
           <span className="MenuGoBtn">

@@ -1,5 +1,5 @@
 import { MdOutlineOpenInNew } from "react-icons/md";
-import { useGlobalContext } from "./GlobalContext";
+import { useGlobalContext } from "../common/GlobalContext";
 
 const AOHome = () => {
   const { currentUser } = useGlobalContext();

@@ -31,4 +31,14 @@ export interface IGlobalContext {
   setIsMenuExpanded: (setIsMenuExpanded: boolean) => void;
   tRList: ITR[];
   setTRList: (setTRList: ITR[]) => void;
+  isEditing: boolean;
+  setIsEditing: (isEditing: boolean) => void;
+  isSubmitted: boolean;
+  setIsSubmitted: (isSubmitted: boolean) => void;
+  isSubmitSuccessful: boolean;
+  setIsSubmitSuccessful: (isSubmitSuccessful: boolean) => void;
+  isError: boolean;
+  setIsError: (isSubmitted: boolean) => void;
+  tempUser: IUser;
+  setTempUser: (user: IUser) => void;
 }
