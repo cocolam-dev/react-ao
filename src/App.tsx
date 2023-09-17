@@ -1,13 +1,13 @@
 import "./App.css";
-import Login from "./components/Login";
+import Login from "./pages/login/Index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AccountDetails from "./components/AccountDetails";
-import AOHome from "./components/AOHome";
-import { useGlobalContext } from "./components/GlobalContext";
-import TR from "./components/TR";
+import AccountDetails from "./pages/AccountDetails/Index";
+import AOHome from "./pages/AOHome";
+import TR from "./pages/TR/Index";
 import SharedLayout from "./components/SharedLayout";
-import Error from "./components/Error";
-import ProtectedRoute from "./components/ProtectedRoute";
+import Error from "./pages/Error";
+import ProtectedRoute from "./common/ProtectedRoute";
+import Signup from "./pages/AccountDetails/SignUpDetails";
 
 // const DisplayCurrentPage = () => {
 //   const { currentPage } = useGlobalContext();
@@ -31,13 +31,21 @@ import ProtectedRoute from "./components/ProtectedRoute";
 // };
 
 function App() {
-  const { isLoggedIn } = useGlobalContext();
   return (
     <BrowserRouter basename="/react-ao">
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Login />} />
-          <Route
+          <Route path="signup" element={<Signup />} />
+          <Route path="*" element={<Error />} />
+
+          <Route element={<ProtectedRoute />}>
+            <Route path="home" element={<AOHome />} />
+            <Route path="tr" element={<TR />} />
+            <Route path="accountdetails" element={<AccountDetails />} />
+          </Route>
+
+          {/* <Route
             path="home"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
@@ -45,7 +53,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="accountdetails" element={<AccountDetails />} />
+          <Route
+            path="accountdetails"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <AccountDetails />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="tr"
             element={
@@ -53,8 +68,7 @@ function App() {
                 <TR />
               </ProtectedRoute>
             }
-          />
-          <Route path="*" element={<Error />} />
+          /> */}
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,12 +1,9 @@
 import { IoIosMenu, IoMdClose } from "react-icons/io";
-import { useGlobalContext } from "./GlobalContext";
+import { useGlobalContext } from "../common/GlobalContext";
 import MenuContent from "./MenuContent";
 
 const SideMenu = () => {
-  const {
-    isMenuExpanded,
-    setIsMenuExpanded,
-  } = useGlobalContext();
+  const { isMenuExpanded, setIsMenuExpanded } = useGlobalContext();
 
   return (
     <>

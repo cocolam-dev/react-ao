@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useGlobalContext } from "./GlobalContext";
+import { useGlobalContext } from "../../common/GlobalContext";
 import TRTable from "./TRTable";
 import { Alert } from "@mui/material";
 
 const TR = () => {
-  
   const { tRList, setTRList, currentUser } = useGlobalContext();
 
   const [isFileSelected, setIsFileSelected] = useState<boolean>(

@@ -6,8 +6,8 @@ const Users = [
     ABN: "12345678901",
     FirstName: "Joe",
     Surname: "Blow",
-    Email: "Joe.Blow@bank.com",
-    Password: "MockPassword",
+    Email: "test@bank.com",
+    Password: "test",
     DOB: "1980-01-31",
   },
   {

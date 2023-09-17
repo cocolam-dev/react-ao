@@ -1,5 +1,5 @@
-import LoginExistingUser from "./LoginExistingUser";
-import LoginNewUser from "./LoginNewUser";
+import LoginExistingUser from "./ExistingUserLogin";
+import NewUserSignUp from "./NewUserSignUp";
 
 const Login = () => {
   return (
@@ -9,7 +9,7 @@ const Login = () => {
         <h2 className="DemoWarning">DEMO ONLY</h2>
         <div className="LoginContainer">
           <LoginExistingUser />
-          <LoginNewUser />
+          <NewUserSignUp />
         </div>
       </section>
       <footer className="LoginFooter">
