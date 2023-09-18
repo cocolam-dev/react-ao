@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import TRS from "../pages/TR/TRs";
-import { IUser, ITR, IGlobalContext } from "../pages/TR/TSInterface";
+import { IUser, ITR, IGlobalContext } from "./TSInterface";
 import Users from "../pages/login/Users";
 
 const GlobalContext = createContext<IGlobalContext>({} as IGlobalContext);
@@ -14,7 +14,9 @@ const AppContext = ({ children }: { children?: ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<IUser>({} as IUser);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<string>("Login");
+
   const [isMenuExpanded, setIsMenuExpanded] = useState<boolean>(false);
+
   const [tRList, setTRList] = useState<ITR[]>(TRS as ITR[]);
 
   const [isEditing, setIsEditing] = useState<boolean>(true);

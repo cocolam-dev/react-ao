@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalContext } from "../../common/GlobalContext";
 import TRTable from "./TRTable";
 import { Alert } from "@mui/material";
 
 const TR = () => {
+  const { setCurrentPage, setIsEditing, setTempUser, setIsError } =
+    useGlobalContext();
+
+  useEffect(() => {
+    setCurrentPage("TR");
+    setIsEditing(false);
+    setTempUser(currentUser);
+    setIsError(false);
+  }, []);
+
   const { tRList, setTRList, currentUser } = useGlobalContext();
 
   const [isFileSelected, setIsFileSelected] = useState<boolean>(

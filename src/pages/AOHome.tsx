@@ -1,8 +1,18 @@
 import { MdOutlineOpenInNew } from "react-icons/md";
 import { useGlobalContext } from "../common/GlobalContext";
+import { useEffect } from "react";
 
 const AOHome = () => {
-  const { currentUser } = useGlobalContext();
+  const { currentUser, setCurrentPage, setIsEditing, setTempUser, setIsError } =
+    useGlobalContext();
+
+  useEffect(() => {
+    setCurrentPage("AOHome");
+    setIsEditing(false);
+    setTempUser(currentUser);
+    setIsError(false);
+  }, []);
+
   return (
     <div className="AOHomePage">
       <section>

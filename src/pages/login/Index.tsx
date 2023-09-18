@@ -1,7 +1,33 @@
 import LoginExistingUser from "./ExistingUserLogin";
 import NewUserSignUp from "./NewUserSignUp";
+import { useGlobalContext } from "../../common/GlobalContext";
+import Users from "./Users";
+import { IUser } from "../../common/TSInterface";
+import { useEffect } from "react";
 
 const Login = () => {
+  const {
+    setIsLoggedIn,
+    setCurrentUser,
+    setIsSubmitSuccessful,
+    setIsEditing,
+    setTempUser,
+    setIsMenuExpanded,
+    setCurrentPage,
+  } = useGlobalContext();
+
+  useEffect(() => {
+    setIsLoggedIn(false);
+    setIsMenuExpanded(false);
+    setCurrentUser({} as IUser);
+    setTempUser(Users[1]);
+    setIsMenuExpanded(false);
+
+    setIsSubmitSuccessful(false);
+    setIsEditing(true);
+    setCurrentPage("login");
+  }, []);
+
   return (
     <div className="LoginPage">
       <section>

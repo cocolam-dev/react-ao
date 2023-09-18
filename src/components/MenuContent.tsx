@@ -1,26 +1,15 @@
 import { useGlobalContext } from "../common/GlobalContext";
 import { IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { IUser } from "../pages/TR/TSInterface";
-import Users from "../pages/login/Users";
 
 const MenuContent = () => {
-  const {
-    setIsLoggedIn,
-    currentPage,
-    setCurrentUser,
-    isMenuExpanded,
-    setIsMenuExpanded,
-    setIsSubmitSuccessful,
-    setIsEditing,
-    setTempUser,
-    setCurrentPage,
-  } = useGlobalContext();
+  const { currentPage, isMenuExpanded, setCurrentPage, setIsMenuExpanded } =
+    useGlobalContext();
 
   const navigate = useNavigate();
 
   return (
-    <div className={isMenuExpanded ? "SideMenu" : "MenuHidden SideMenu"}>
+    <div className={isMenuExpanded ? "SideMenu" : "SideMenu MenuHidden"}>
       <h3 className="MenuTitle">Menu</h3>
       <div className={currentPage === "AOHome" ? "SelectedBtn" : "MenuOption"}>
         <button
@@ -75,13 +64,14 @@ const MenuContent = () => {
         <button
           className="MenuBtn"
           onClick={() => {
-            setIsLoggedIn(false);
-            setCurrentUser({} as IUser);
-            setTempUser(Users[1]);
+            // setIsLoggedIn(false);
+            // setCurrentUser({} as IUser);
+            // setTempUser(Users[1]);
+            // setIsMenuExpanded(false);
+            // setIsPopUpMenuExpanded(false);
+            // setIsSubmitSuccessful(false);
+            // setIsEditing(true);
             navigate("/");
-            setIsMenuExpanded(false);
-            setIsSubmitSuccessful(false);
-            setIsEditing(true);
           }}
         >
           <span className="MenuGoBtn">
