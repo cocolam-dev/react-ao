@@ -1,6 +1,29 @@
+import { useEffect } from "react";
+import { useGlobalContext } from "../../common/GlobalContext";
 import Form from "./Form";
+import Users from "../login/Users";
 
 const SignUpDetails = () => {
+  const {
+    setCurrentUser,
+    setCurrentPage,
+    setIsEditing,
+    setTempUser,
+    setIsError,
+    setIsLoggedIn,
+    setIsMenuExpanded,
+  } = useGlobalContext();
+
+  useEffect(() => {
+    setCurrentPage("SignUpDetails");
+    setIsEditing(true);
+    setCurrentUser(Users[1]);
+    setTempUser(Users[1]);
+    setIsError(false);
+    setIsLoggedIn(false);
+    setIsMenuExpanded(false);
+  }, []);
+
   return (
     <div className="AccountDetailsPage">
       <section className="AccountDetailsHeader">

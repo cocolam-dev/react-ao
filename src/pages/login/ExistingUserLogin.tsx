@@ -11,6 +11,7 @@ const ExistingUserLogin = () => {
     setIsEditing,
     setTempUser,
     setCurrentPage,
+    setIsMenuExpanded,
   } = useGlobalContext();
 
   const navigate = useNavigate();
@@ -50,11 +51,12 @@ const ExistingUserLogin = () => {
       setIsLoginSuccessful(true);
       setIsLoggedIn(true);
       setIsEditing(false);
-      setCurrentPage("AOHome")
+      setIsMenuExpanded(true);
+      setCurrentPage("AOHome");
       navigate("/home");
     } else {
+      setIsLoginSuccessful(false);
     }
-    setIsLoginSuccessful(false);
   };
 
   return (

@@ -449,6 +449,10 @@ Media Query
     left: 1rem;
   }
 
+  .PopUpMenuHidden {
+    display: none;
+  }
+
   .AOHomePage section,
   .TRPage section {
     max-width: 80vw;
@@ -487,6 +491,11 @@ Media Query
   .MenuHidden {
     display: none;
   }
+
+  .PopUpMenuHidden {
+    display: none;
+  }
+
   .AOHomePage section,
   .TRPage section {
     max-width: 80vw;

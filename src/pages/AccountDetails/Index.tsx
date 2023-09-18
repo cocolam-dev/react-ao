@@ -1,6 +1,14 @@
+import { useEffect } from "react";
+import { useGlobalContext } from "../../common/GlobalContext";
 import Form from "./Form";
 
 const AccountDetails = () => {
+  const { setCurrentPage } = useGlobalContext();
+
+  useEffect(() => {
+    setCurrentPage("AccountDetails");
+  }, []);
+
   return (
     <div className="AccountDetailsPage">
       <br />

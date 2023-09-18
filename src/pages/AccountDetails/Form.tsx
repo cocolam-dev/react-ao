@@ -1,7 +1,7 @@
 import { ChangeEvent, MouseEvent } from "react";
 import { useGlobalContext } from "../../common/GlobalContext";
 import { useNavigate } from "react-router-dom";
-import { IUser } from "../TR/TSInterface";
+import { IUser } from "../../common/TSInterface";
 import { Action } from "./Action";
 import { Alert } from "@mui/material";
 

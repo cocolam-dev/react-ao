@@ -7,6 +7,7 @@ const NewUserSignUp = () => {
 
   const { setCurrentUser, setIsError, setTempUser, setCurrentPage } =
     useGlobalContext();
+
   return (
     <div className="LoginNewUserContainer">
       <h2>New User</h2>
@@ -16,7 +17,7 @@ const NewUserSignUp = () => {
           setCurrentUser(Users[1]);
           setTempUser(Users[1]);
           setIsError(false);
-          setCurrentPage("SignUpDetails")
+          setCurrentPage("SignUpDetails");
           navigate("/signup");
         }}
       >
